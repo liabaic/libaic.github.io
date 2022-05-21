@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>www.baidu.com</title>
+		<link rel="stylesheet" type="text/css" href="css/new_file.css"/>
+	</head>
+	<body>
+<h2>二层</h2>
+<div class="p">
+	
+
+<p>sys</p>
+<p>sysn LSW2</p>
+<p>vlan b 60 to 200 </p>
+<p>int g0/0/1</p>
+<p>po link-ty tr</p>
+<p>po tr all vlan 61 to 200</p>
+<p>int g0/0/2</p>
+<p>po link-ty tr</p>
+<p>po tr all vlan 61 to 200</p>
+<p>int e0/0/1</p>
+<p>po link-type ac</p>
+<p>po de vlan 61</p>
+</div>
+<h2>三层</h2>
+<div class="p">
+	
+
+<p>sys</p>
+<p>sysn LSW2</p>
+<p>dhcp en</p>
+<p>vlan b 60 to 200 </p>
+<p>int g0/0/1</p>
+<p>po link-ty tr</p>
+<p>po tr all vlan 61 to 200</p>
+<p>int g0/0/2</p>
+<p>po link-ty tr</p>
+<p>po tr all vlan 61 to 200</p>
+<p>int g0/0/3</p>
+<p>po link-ty tr</p>
+<p>po tr all vlan 61 to 200</p>
+<p>int eth-tr 1</p>
+<p>trunkport g 0/0/21 to 0/0/22</p>
+<p>po link-ty tr 1</p>
+<p>po tr all vlan 61 to 200</p>
+<p>int g0/0/24</p>
+<p>po link-type ac</p>
+<p>po de vlan 112</p>
+
+<p>int vlan 112 </p>
+<p>ip add 10.10.112.2 30</p>
+<p>int vlan 61 </p>
+<p>ip add 10.10.61.253 24</p>
+<p>vrrp vrid 61 virtual-ip 10.10.61.254</p>
+<p>vrrp vrid 61 track interface GigabitEthernet 0/0/24 reduced 100</p>
+<p>vrrp vrid 61 priority 120</p>
+<p>int vlan 62</p>
+<p>ip add 10.10.62.253 24</p>
+<p>vrrp vrid 62 virtual-ip 10.10.62.254</p>
+<p>vrrp vrid 62 track interface GigabitEthernet 0/0/24 reduced 100</p>
+<p>vrrp vrid 62 priority 120</p>
+<p>int vlan 63</p>
+<p>ip add 10.10.63.253 24</p>
+<p>vrrp vrid 63 virtual-ip 10.10.63.254</p>
+<p>vrrp vrid 63 track interface GigabitEthernet 0/0/24 reduced 100</p>
+<p>vrrp vrid 63 priority 80</p>
+<p>int vlan 64</p>
+<p>ip add 10.10.64.253 24</p>
+<p>vrrp vrid 64 virtual-ip 10.10.64.254</p>
+<p>vrrp vrid 64 track interface GigabitEthernet 0/0/24 reduced 100</p>
+<p>vrrp vrid 64 priority 80</p>
+
+<p>smtp mo mstp</p>
+<p>stp region-configuration</p>
+<p>instance 1 vlan 61 to 62</p>
+<p>instance 2 vlan 63 to 64</p>
+<p>region-name f1</p>
+<p>revision-level 1</p>
+<p>qu</p>
+<p>stp instance  1 priority 4096</p>
+<p>stp instance  2 priority 0</p>
+
+<p>ip pool vlan61</p>
+<p>gateway-list 10.10.61.254</p>
+<p>network 10.10.61.0 mask 24</p>
+<p>excluded-ip-address 10.10.61.1 10.10.61.100</p>
+<p>dns-list 202.96.128.166</p>
+<p>l day 3</p>
+<p>ip pool vlan62</p>
+<p>gateway-list 10.10.62.254</p>
+<p>network 10.10.62.0 mask 24</p>
+<p>excluded-ip-address 10.10.62.1 10.10.62.100</p>
+<p>dns-list 202.96.128.166</p>
+<p>l day 3</p>
+<p>ip pool vlan63</p>
+<p>gateway-list 10.10.63.254</p>
+<p>network 10.10.63.0 mask 24</p>
+<p>excluded-ip-address 10.10.63.1 10.10.63.100</p>
+<p>dns-list 202.96.128.166</p>
+<p>l day 3</p>
+<p>ip pool vlan64</p>
+<p>gateway-list 10.10.64.254</p>
+<p>network 10.10.64.0 mask 24</p>
+<p>excluded-ip-address 10.10.64.1 10.10.64.100</p>
+<p>dns-list 202.96.128.166</p>
+<p>l day 3</p>
+<p>qu</p>
+<p>ospf</p>
+<p>ar 0</p>
+<p>net 10.10.61.0 0.0.0.255</p>
+<p>net 10.10.61.0 0.0.0.255</p>
+<p>net 10.10.61.0 0.0.0.255</p>
+<p>net 10.10.112.0 0.0.0.3 </p>
+<p>ip rou 0.0.0.0 0.0.0.0 10.10.112.1</p>
+</div>
+<h2>R1</h2>
+<div class="p">
+	
+
+sys</p>
+sysn AR1</p>
+
+</p>int g 0/0/1</p>
+</p>ip add 10.10.111.1 30</p>
+</p>int g 0/0/2</p>
+</p>ip add 10.10.112.1 30</p>
+</p>int s 1/0/0</p>
+</p>ip add 11.11.11.1 24</p>
+
+<p>ospf 1</p>
+<p>area 0</p>
+<p>network 10.10.111.0 0.0.0.3 </p>
+<p>network 10.10.112.0 0.0.0.3</p>
+<p>authentication-mode md5 1 cipher gd  </p>
+<p>quit
+<p>ip route-static 0.0.0.0 0.0.0.0 11.11.11.2</p>
+
+<p>ppp pap local-user by password cipher 123456</p>
+
+<p>acl 2000</p>
+<p>rule 0 permit source any   </p>
+<p>int 1/0/0</p>
+<p>nat outbound 2000</p>
+</div>
+<h2>R2</h2>
+<div class="p">
+<p>sys</p>
+<p>sysn AR2</p>
+<p>int g 0/0/0</p>
+<p>ip add 200.200.22.2 24</p>
+<p>int s 1/0/0</p>
+<p>ip add 1.11.11.2 24</p>
+<p>ppp authentication-mode pap</p>
+
+<p>aaa</p>
+<p>local-user by password cipher 123456</p>
+<p>local-user by service-type ppp   </p>
+</div>
+
+	</body>
+</html>
